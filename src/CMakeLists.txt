@@ -15,6 +15,7 @@ list(APPEND TJ_SRC
 list(APPEND TJ_HPP
   "cApp.hpp"
   "cSurface.hpp"
+  "resource_path.hpp"
 )
 
 add_executable(TimJones ${TJ_SRC} ${TJ_HPP})

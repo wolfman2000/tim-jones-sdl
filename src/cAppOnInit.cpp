@@ -1,4 +1,6 @@
 #include "cApp.hpp"
+#include "cSurface.hpp"
+#include "resource_path.hpp"
 
 bool CApp::OnInit() {
   // We don't HAVE to initialize everything, but it is convenient.
@@ -14,6 +16,11 @@ bool CApp::OnInit() {
   
   _renderer.reset(SDL_CreateRenderer(_window.get(), -1, SDL_RENDERER_ACCELERATED));
   if (_renderer == nullptr) {
+    return false;
+  }
+  
+  _testTexture = CSurface::OnLoad(_renderer.get(), getResourcePath() + "dot.bmp");
+  if (_testTexture == nullptr) {
     return false;
   }
   

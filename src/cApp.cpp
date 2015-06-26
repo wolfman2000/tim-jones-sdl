@@ -1,6 +1,6 @@
 #include "cApp.hpp"
 
-CApp::CApp(): _isRunning(true), _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer) {
+CApp::CApp(): _isRunning(true), _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _testTexture(nullptr, SDL_DestroyTexture) {
 
 }
 
