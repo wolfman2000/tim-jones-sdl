@@ -20,6 +20,8 @@ public:
   // This function may not be as needed much with C++11.
   // Still is good to have perhaps.
   void OnCleanup();
+private:
+  bool _isRunning;
 };
 
 #endif
