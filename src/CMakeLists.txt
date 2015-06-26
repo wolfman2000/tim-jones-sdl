@@ -4,6 +4,11 @@ list(APPEND TJ_INCLUDE_DIRS
 
 list(APPEND TJ_SRC
   "cApp.cpp"
+  "cAppOnInit.cpp"
+  "cAppOnEvent.cpp"
+  "cAppOnLoop.cpp"
+  "cAppOnRender.cpp"
+  "cAppOnCleanup.cpp"
 )
 
 list(APPEND TJ_HPP
