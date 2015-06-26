@@ -1,5 +1,15 @@
 #include "cApp.hpp"
 
-int main() {
+CApp::CApp() {
+  
+}
+
+int CApp::OnExecute() {
   return 0;
+}
+
+int main() {
+  CApp theApp;
+  
+  return theApp.OnExecute();
 }
