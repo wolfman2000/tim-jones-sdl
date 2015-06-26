@@ -9,10 +9,12 @@ list(APPEND TJ_SRC
   "cAppOnLoop.cpp"
   "cAppOnRender.cpp"
   "cAppOnCleanup.cpp"
+  "cSurface.cpp"
 )
 
 list(APPEND TJ_HPP
   "cApp.hpp"
+  "cSurface.hpp"
 )
 
 add_executable(TimJones ${TJ_SRC} ${TJ_HPP})
