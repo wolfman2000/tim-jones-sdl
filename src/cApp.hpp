@@ -1,6 +1,8 @@
 #ifndef C_APP_HPP_
 #define C_APP_HPP_
 
+#include <memory>
+
 #include "SDL.h"
 
 class CApp {
@@ -22,6 +24,10 @@ public:
   void OnCleanup();
 private:
   bool _isRunning;
+  
+  std::unique_ptr<SDL_Window, void(*)(SDL_Window *)> _window;
+  
+  std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer *)> _renderer;
 };
 
 #endif

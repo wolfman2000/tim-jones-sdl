@@ -1,7 +1,7 @@
 #include "cApp.hpp"
 
-CApp::CApp() {
-  _isRunning = true;
+CApp::CApp(): _isRunning(true), _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer) {
+
 }
 
 int CApp::OnExecute() {
