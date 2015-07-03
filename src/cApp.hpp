@@ -4,8 +4,9 @@
 #include <memory>
 
 #include "SDL.h"
+#include "cEvent.hpp"
 
-class CApp {
+class CApp: public CEvent {
 public:
   CApp();
   
@@ -22,6 +23,9 @@ public:
   // This function may not be as needed much with C++11.
   // Still is good to have perhaps.
   void OnCleanup();
+  
+  // Since the app is also an event, override quit to do exit the app.
+  void OnExit() override;
 private:
   bool _isRunning;
   

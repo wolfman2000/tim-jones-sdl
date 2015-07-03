@@ -24,6 +24,10 @@ int CApp::OnExecute() {
   return 0;
 }
 
+void CApp::OnExit() {
+  _isRunning = false;
+}
+
 int main() {
   CApp theApp;
   
