@@ -1,5 +1,6 @@
 list(APPEND TJ_INCLUDE_DIRS
   "${SDL2_INCLUDE_DIR}"
+  "${SDL2_IMAGE_INCLUDE_DIR}"
 )
 
 list(APPEND TJ_SRC
@@ -30,7 +31,7 @@ set_target_properties(TimJones PROPERTIES
 target_include_directories(TimJones PUBLIC ${TJ_INCLUDE_DIRS})
 
 if (MSVC)
-  set_target_properties(TimJones PROPERTIES LINK_FLAGS "/LIBPATH:\${SDL2_LIB_DIR}\"")
+  set_target_properties(TimJones PROPERTIES LINK_FLAGS "/LIBPATH:\"${SDL2_LIB_DIR}\" /LIBPATH:\"${SDL2_IMAGE_LIB_DIR}\"")
   list(APPEND TJ_LINK_LIBS
     "SDL2.lib"
     "SDL2main.lib"
@@ -42,6 +43,7 @@ if (MSVC)
 else()
   list(APPEND TJ_LINK_LIBS
     ${SDL2_LIBRARY}
+    ${SDL2_IMAGE_LIBRARY}
   )
 endif()
 

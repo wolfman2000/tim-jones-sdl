@@ -2,6 +2,8 @@
 #include "cSurface.hpp"
 #include "resource_path.hpp"
 
+#include "SDL_image.h"
+
 bool CApp::OnInit() {
   // We don't HAVE to initialize everything, but it is convenient.
   if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -14,6 +16,10 @@ bool CApp::OnInit() {
     return false;
   }
   
+  if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)) {
+    return false;
+  }
+
   _renderer.reset(SDL_CreateRenderer(_window.get(), -1, SDL_RENDERER_ACCELERATED));
   if (_renderer == nullptr) {
     return false;

@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#include "SDL_image.h"
+
 CSurface::CSurface() {
   
 }
@@ -9,7 +11,7 @@ CSurface::CSurface() {
 std::unique_ptr<SDL_Surface, void(*)(SDL_Surface *)> CSurface::OnLoad(std::string file) {
   std::unique_ptr<SDL_Surface, void(*)(SDL_Surface *)> tmp(nullptr, SDL_FreeSurface);
   
-  tmp.reset(SDL_LoadBMP(file.c_str()));
+  tmp.reset(IMG_Load(file.c_str()));
   return tmp;
 }
 

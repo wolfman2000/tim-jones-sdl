@@ -13,6 +13,7 @@ endif()
 
 # Set SDL2 up.
 find_package(SDL2 REQUIRED)
+find_package(SDL2Image REQUIRED)
 
 add_subdirectory(src)
 
