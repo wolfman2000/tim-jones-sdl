@@ -8,10 +8,14 @@ void CApp::OnRender() {
   SDL_RenderClear(renderer);
   SDL_RenderSetViewport(renderer, nullptr);
   
-  SDL_Rect corner = {0, 0, 20, 20};
-  SDL_RenderSetViewport(renderer, &corner);
+//  SDL_Rect corner = {0, 0, 20, 20};
+//  SDL_RenderSetViewport(renderer, &corner);
   
-  CSurface::OnDraw(renderer, _testTexture.get(), 0, 0);
+//  CSurface::OnDraw(renderer, _testTexture.get(), 0, 0);
+  
+//  SDL_RenderSetViewport(renderer, nullptr);
+  SDL_Rect src ={ 0, 0, 50, 50 };
+  CSurface::OnDraw(renderer, _testTexture.get(), 100, 100, &src);
   
   SDL_RenderPresent(renderer);
 }

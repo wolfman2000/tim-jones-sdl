@@ -25,7 +25,7 @@ bool CApp::OnInit() {
     return false;
   }
   
-  _testTexture = CSurface::OnLoad(_renderer.get(), getResourcePath() + "dot.bmp");
+  _testTexture = CSurface::OnLoad(_renderer.get(), getResourcePath() + "tileset.png");
   if (_testTexture == nullptr) {
     return false;
   }

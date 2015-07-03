@@ -26,30 +26,6 @@ std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> CSurface::OnLoad(SDL_Render
   return optimized;
 }
 
-bool CSurface::OnDraw(SDL_Surface * surfDest, SDL_Surface * surfSrc, int x, int y) {
-  if (surfSrc == nullptr || surfDest == nullptr) {
-    return false;
-  }
-  
-  SDL_Rect dest;
-  dest.x = x;
-  dest.y = y;
-  SDL_BlitSurface(surfSrc, nullptr, surfDest, &dest);
-  
-  return true;
-}
-
-bool CSurface::OnDraw(SDL_Renderer * dest, SDL_Surface * src, int x, int y) {
-  if (dest == nullptr || src == nullptr) {
-    return false;
-  }
-  
-  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> surface(SDL_CreateTextureFromSurface(dest, src), SDL_DestroyTexture);
-  SDL_RenderCopy(dest, surface.get(), nullptr, nullptr);
-  
-  return true;
-}
-
 bool CSurface::OnDraw(SDL_Renderer * dest, SDL_Texture * src, int x, int y) {
   if (dest == nullptr || src == nullptr) {
     return false;
@@ -57,5 +33,20 @@ bool CSurface::OnDraw(SDL_Renderer * dest, SDL_Texture * src, int x, int y) {
   
   SDL_RenderCopy(dest, src, nullptr, nullptr);
   
+  return true;
+}
+
+bool CSurface::OnDraw(SDL_Renderer * dest, SDL_Texture * src, int x, int y, SDL_Rect *clip) {
+  if (dest == nullptr || src == nullptr) {
+    return false;
+  }
+  
+  SDL_Rect destR = { x, y, 640, 480 };
+  if (clip != nullptr) {
+    destR.w = clip->w;
+    destR.h = clip->h;
+  }
+
+  SDL_RenderCopy(dest, src, clip, &destR);
   return true;
 }
