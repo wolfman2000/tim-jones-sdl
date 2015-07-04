@@ -25,8 +25,19 @@ bool CApp::OnInit() {
     return false;
   }
   
-  _testTexture = CSurface::OnLoad(_renderer.get(), getResourcePath() + "tileset.png");
-  if (_testTexture == nullptr) {
+  std::string startingPath = getResourcePath("tic-tac-toe");
+  _gridTexture = CSurface::OnLoad(_renderer.get(), startingPath + "grid.png");
+  if (_gridTexture == nullptr) {
+    return false;
+  }
+  
+  _xTexture = CSurface::OnLoad(_renderer.get(), startingPath + "x.png");
+  if (_xTexture == nullptr) {
+    return false;
+  }
+  
+  _oTexture = CSurface::OnLoad(_renderer.get(), startingPath + "o.png");
+  if (_oTexture == nullptr) {
     return false;
   }
   

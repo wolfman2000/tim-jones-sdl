@@ -1,6 +1,8 @@
 #include "cApp.hpp"
 
 void CApp::OnCleanup() {
-  _testTexture.reset();
+  _gridTexture.reset();
+  _xTexture.reset();
+  _oTexture.reset();
   SDL_Quit();
 }

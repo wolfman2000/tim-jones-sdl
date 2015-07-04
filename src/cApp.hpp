@@ -33,7 +33,11 @@ private:
   
   std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer *)> _renderer;
   
-  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _testTexture;
+  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _gridTexture;
+  
+  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _xTexture;
+  
+  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _oTexture;
 };
 
 #endif
