@@ -42,6 +42,9 @@ public:
   // Override the left button down behavior.
   void OnLButtonDown(int mX, int mY) override;
   
+  // Override the key down behavior to allow for resetting the game.
+  void OnKeyDown(SDL_Keycode sym, SDL_Scancode scan, Uint16 mod) override;
+  
   // App specific item to reset the game.
   void Reset();
   

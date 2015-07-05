@@ -27,6 +27,7 @@ void CApp::Reset() {
   for (auto &square: _grid) {
     square = GridType::None;
   }
+  _playerNumber = PlayerNumber::One;
 }
 
 void CApp::SetCell(int id, GridType type) {
