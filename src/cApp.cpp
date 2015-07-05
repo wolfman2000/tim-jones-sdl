@@ -1,6 +1,6 @@
 #include "cApp.hpp"
 
-CApp::CApp(): _isRunning(true), _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _gridTexture(nullptr, SDL_DestroyTexture), _xTexture(nullptr, SDL_DestroyTexture), _oTexture(nullptr, SDL_DestroyTexture), _grid(), _playerNumber(PlayerNumber::One) {
+CApp::CApp(): _isRunning(true), _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _gridTexture(nullptr, SDL_DestroyTexture), _xTexture(nullptr, SDL_DestroyTexture), _oTexture(nullptr, SDL_DestroyTexture), _grid(), _playerNumber(PlayerNumber::One), _winner(Winner::None) {
 }
 
 int CApp::OnExecute() {
@@ -28,6 +28,7 @@ void CApp::Reset() {
     square = GridType::None;
   }
   _playerNumber = PlayerNumber::One;
+  _winner = Winner::None;
 }
 
 void CApp::SetCell(int id, GridType type) {

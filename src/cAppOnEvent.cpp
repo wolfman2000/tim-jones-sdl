@@ -11,6 +11,11 @@ void CApp::OnKeyDown(SDL_Keycode sym, SDL_Scancode scan, Uint16 mod) {
 }
 
 void CApp::OnLButtonDown(int mX, int mY) {
+  // Ignore input if the game is won.
+  if (_winner != Winner::None) {
+    return;
+  }
+  
   int id = ( mX / 200 ) + (( mY / 200) * 3);
   
   if (_grid[id] != GridType::None) {

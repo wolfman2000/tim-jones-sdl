@@ -18,6 +18,13 @@ enum class PlayerNumber {
   Two
 };
 
+enum class Winner {
+  None,
+  X,
+  O,
+  Draw
+};
+
 class CApp: public CEvent {
 public:
   CApp();
@@ -67,6 +74,12 @@ private:
   std::array<GridType, 9> _grid;
   
   PlayerNumber _playerNumber;
+  
+  // Who won the game?
+  Winner _winner;
+  
+  // Determine who won.
+  Winner GetWinner();
 };
 
 #endif
