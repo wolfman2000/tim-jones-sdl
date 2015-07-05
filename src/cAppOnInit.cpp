@@ -10,7 +10,7 @@ bool CApp::OnInit() {
     return false;
   }
   
-  _window.reset(SDL_CreateWindow("Tim Jones Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 600, 600, 0));
+  _window.reset(SDL_CreateWindow("Tim Jones Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0));
   
   if (_window == nullptr) {
     return false;
@@ -25,23 +25,19 @@ bool CApp::OnInit() {
     return false;
   }
   
-  std::string startingPath = getResourcePath("tic-tac-toe");
-  _gridTexture = CSurface::OnLoad(_renderer.get(), startingPath + "grid.png");
-  if (_gridTexture == nullptr) {
+  std::string startingPath = getResourcePath();
+  _backgroundTexture = CSurface::OnLoad(_renderer.get(), startingPath + "bg.bmp");
+  if (_backgroundTexture == nullptr) {
     return false;
   }
   
-  _xTexture = CSurface::OnLoad(_renderer.get(), startingPath + "x.png", 255, 0, 255);
-  if (_xTexture == nullptr) {
+  _yoshiTexture = CSurface::OnLoad(_renderer.get(), startingPath + "yoshi.bmp", 255, 0, 255);
+  if (_yoshiTexture == nullptr) {
     return false;
   }
   
-  _oTexture = CSurface::OnLoad(_renderer.get(), startingPath + "o.png", 255, 0, 255);
-  if (_oTexture == nullptr) {
-    return false;
-  }
-  
-  Reset();
+  _animYoshi.SetMaxFrames(8);
+  // _animYoshi.SetOscillate(true);
   
   return true;
 }

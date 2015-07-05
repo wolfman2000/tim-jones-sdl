@@ -10,12 +10,14 @@ list(APPEND TJ_SRC
   "cAppOnLoop.cpp"
   "cAppOnRender.cpp"
   "cAppOnCleanup.cpp"
+  "cAnimation.cpp"
   "cEvent.cpp"
   "cSurface.cpp"
 )
 
 list(APPEND TJ_HPP
   "cApp.hpp"
+  "cAnimation.hpp"
   "cEvent.hpp"
   "cSurface.hpp"
   "resource_path.hpp"

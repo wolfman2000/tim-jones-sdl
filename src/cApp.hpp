@@ -5,25 +5,8 @@
 #include <array>
 
 #include "SDL.h"
+#include "cAnimation.hpp"
 #include "cEvent.hpp"
-
-enum class GridType {
-  None,
-  X,
-  O
-};
-
-enum class PlayerNumber {
-  One,
-  Two
-};
-
-enum class Winner {
-  None,
-  X,
-  O,
-  Draw
-};
 
 class CApp: public CEvent {
 public:
@@ -52,11 +35,6 @@ public:
   // Override the key down behavior to allow for resetting the game.
   void OnKeyDown(SDL_Keycode sym, SDL_Scancode scan, Uint16 mod) override;
   
-  // App specific item to reset the game.
-  void Reset();
-  
-  // App specific item to set a cell.
-  void SetCell(int id, GridType type);
 private:
   bool _isRunning;
   
@@ -64,22 +42,11 @@ private:
   
   std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer *)> _renderer;
   
-  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _gridTexture;
+  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _backgroundTexture;
   
-  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _xTexture;
+  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _yoshiTexture;
   
-  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _oTexture;
-  
-  // Top left to bottom right is the grid.
-  std::array<GridType, 9> _grid;
-  
-  PlayerNumber _playerNumber;
-  
-  // Who won the game?
-  Winner _winner;
-  
-  // Determine who won.
-  Winner GetWinner();
+  CAnimation _animYoshi;
 };
 
 #endif

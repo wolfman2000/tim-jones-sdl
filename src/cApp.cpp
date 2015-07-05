@@ -1,6 +1,6 @@
 #include "cApp.hpp"
 
-CApp::CApp(): _isRunning(true), _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _gridTexture(nullptr, SDL_DestroyTexture), _xTexture(nullptr, SDL_DestroyTexture), _oTexture(nullptr, SDL_DestroyTexture), _grid(), _playerNumber(PlayerNumber::One), _winner(Winner::None) {
+CApp::CApp(): _isRunning(true), _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _backgroundTexture(nullptr, SDL_DestroyTexture), _yoshiTexture(nullptr, SDL_DestroyTexture), _animYoshi() {
 }
 
 int CApp::OnExecute() {
@@ -21,22 +21,6 @@ int CApp::OnExecute() {
   OnCleanup();
   
   return 0;
-}
-
-void CApp::Reset() {
-  for (auto &square: _grid) {
-    square = GridType::None;
-  }
-  _playerNumber = PlayerNumber::One;
-  _winner = Winner::None;
-}
-
-void CApp::SetCell(int id, GridType type) {
-  if (id < 0 || id >= _grid.size()) {
-    return;
-  }
-  
-  _grid[id] = type;
 }
 
 int main() {
