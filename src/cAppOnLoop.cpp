@@ -13,5 +13,9 @@ struct EnumClassHash {
 
 
 void CApp::OnLoop() {
-  _animYoshi.OnAnimate();
+  for (auto *entity: CEntity::_entityList) {
+    if (entity != nullptr) {
+      entity->OnLoop();
+    }
+  }
 }

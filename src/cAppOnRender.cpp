@@ -8,10 +8,11 @@ void CApp::OnRender() {
   SDL_RenderClear(renderer);
   SDL_RenderSetViewport(renderer, nullptr);
   
-  CSurface::OnDraw(renderer, _backgroundTexture.get(), 0, 0);
-  
-  SDL_Rect yoshi = { 0, _animYoshi.GetCurrentFrame() * 64, 64, 64 };
-  CSurface::OnDraw(renderer, _yoshiTexture.get(), 290, 220, &yoshi);
+  for (auto *entity: CEntity::_entityList) {
+    if (entity != nullptr) {
+      entity->OnRender(renderer);
+    }
+  }
   
   SDL_RenderPresent(renderer);
 }

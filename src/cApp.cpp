@@ -1,6 +1,6 @@
 #include "cApp.hpp"
 
-CApp::CApp(): _isRunning(true), _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _backgroundTexture(nullptr, SDL_DestroyTexture), _yoshiTexture(nullptr, SDL_DestroyTexture), _animYoshi() {
+CApp::CApp(): _isRunning(true), _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _yoshiRight(), _yoshiLeft() {
 }
 
 int CApp::OnExecute() {

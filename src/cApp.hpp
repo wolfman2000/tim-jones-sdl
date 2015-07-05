@@ -6,6 +6,7 @@
 
 #include "SDL.h"
 #include "cAnimation.hpp"
+#include "cEntity.hpp"
 #include "cEvent.hpp"
 
 class CApp: public CEvent {
@@ -42,11 +43,8 @@ private:
   
   std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer *)> _renderer;
   
-  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _backgroundTexture;
-  
-  std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _yoshiTexture;
-  
-  CAnimation _animYoshi;
+  CEntity _yoshiRight;
+  CEntity _yoshiLeft;
 };
 
 #endif

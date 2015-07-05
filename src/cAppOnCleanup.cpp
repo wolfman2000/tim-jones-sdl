@@ -1,7 +1,13 @@
 #include "cApp.hpp"
 
 void CApp::OnCleanup() {
-  _backgroundTexture.reset();
-  _yoshiTexture.reset();
+  for (auto *entity: CEntity::_entityList) {
+    if (entity != nullptr) {
+      entity->OnCleanup();
+    }
+  }
+  
+  CEntity::_entityList.clear();
+  
   SDL_Quit();
 }

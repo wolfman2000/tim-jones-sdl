@@ -11,6 +11,7 @@ list(APPEND TJ_SRC
   "cAppOnRender.cpp"
   "cAppOnCleanup.cpp"
   "cAnimation.cpp"
+  "cEntity.cpp"
   "cEvent.cpp"
   "cSurface.cpp"
 )
@@ -18,6 +19,7 @@ list(APPEND TJ_SRC
 list(APPEND TJ_HPP
   "cApp.hpp"
   "cAnimation.hpp"
+  "cEntity.hpp"
   "cEvent.hpp"
   "cSurface.hpp"
   "resource_path.hpp"

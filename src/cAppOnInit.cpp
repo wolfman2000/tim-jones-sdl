@@ -26,18 +26,19 @@ bool CApp::OnInit() {
   }
   
   std::string startingPath = getResourcePath();
-  _backgroundTexture = CSurface::OnLoad(_renderer.get(), startingPath + "bg.bmp");
-  if (_backgroundTexture == nullptr) {
+  
+  if (_yoshiRight.OnLoad(_renderer.get(), startingPath + "yoshi.bmp", 64, 64, 8) == false) {
     return false;
   }
   
-  _yoshiTexture = CSurface::OnLoad(_renderer.get(), startingPath + "yoshi.bmp", 255, 0, 255);
-  if (_yoshiTexture == nullptr) {
+  if (_yoshiLeft.OnLoad(_renderer.get(), startingPath + "yoshiLeft.bmp", 64, 64, 8) == false) {
     return false;
   }
   
-  _animYoshi.SetMaxFrames(8);
-  // _animYoshi.SetOscillate(true);
+  _yoshiLeft.SetX(100.f);
+  
+  CEntity::_entityList.push_back(&_yoshiRight);
+  CEntity::_entityList.push_back(&_yoshiLeft);
   
   return true;
 }
