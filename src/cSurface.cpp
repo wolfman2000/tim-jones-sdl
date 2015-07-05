@@ -16,11 +16,23 @@ std::unique_ptr<SDL_Surface, void(*)(SDL_Surface *)> CSurface::OnLoad(std::strin
 }
 
 std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> CSurface::OnLoad(SDL_Renderer *renderer, std::string file) {
+  return OnLoad(renderer, file, 0, 0, 0, false);
+}
+
+std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> CSurface::OnLoad(SDL_Renderer *renderer, std::string file, Uint8 red, Uint8 green, Uint8 blue) {
+  return OnLoad(renderer, file, red, green, blue, true);
+}
+
+std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> CSurface::OnLoad(SDL_Renderer *renderer, std::string file, Uint8 red, Uint8 green, Uint8 blue, bool isColorKeyNeeded) {
   std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> optimized(nullptr, SDL_DestroyTexture);
   
   std::unique_ptr<SDL_Surface, void(*)(SDL_Surface *)> tmp = OnLoad(file);
   if (tmp != nullptr) {
-    optimized.reset(SDL_CreateTextureFromSurface(renderer, tmp.get()));
+    auto *surface = tmp.get();
+    if (isColorKeyNeeded) {
+      SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, red, green, blue));
+    }
+    optimized.reset(SDL_CreateTextureFromSurface(renderer, surface));
   }
   
   return optimized;

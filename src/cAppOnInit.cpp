@@ -31,12 +31,12 @@ bool CApp::OnInit() {
     return false;
   }
   
-  _xTexture = CSurface::OnLoad(_renderer.get(), startingPath + "x.png");
+  _xTexture = CSurface::OnLoad(_renderer.get(), startingPath + "x.png", 255, 0, 255);
   if (_xTexture == nullptr) {
     return false;
   }
   
-  _oTexture = CSurface::OnLoad(_renderer.get(), startingPath + "o.png");
+  _oTexture = CSurface::OnLoad(_renderer.get(), startingPath + "o.png", 255, 0, 255);
   if (_oTexture == nullptr) {
     return false;
   }
