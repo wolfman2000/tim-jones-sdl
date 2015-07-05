@@ -10,7 +10,7 @@ bool CApp::OnInit() {
     return false;
   }
   
-  _window.reset(SDL_CreateWindow("Tim Jones Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0));
+  _window.reset(SDL_CreateWindow("Tim Jones Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 600, 600, 0));
   
   if (_window == nullptr) {
     return false;
@@ -40,6 +40,8 @@ bool CApp::OnInit() {
   if (_oTexture == nullptr) {
     return false;
   }
+  
+  Reset();
   
   return true;
 }

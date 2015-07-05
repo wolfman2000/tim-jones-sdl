@@ -2,9 +2,21 @@
 #define C_APP_HPP_
 
 #include <memory>
+#include <array>
 
 #include "SDL.h"
 #include "cEvent.hpp"
+
+enum class GridType {
+  None,
+  X,
+  O
+};
+
+enum class PlayerNumber {
+  One,
+  Two
+};
 
 class CApp: public CEvent {
 public:
@@ -26,6 +38,15 @@ public:
   
   // Since the app is also an event, override quit to do exit the app.
   void OnExit() override;
+  
+  // Override the left button down behavior.
+  void OnLButtonDown(int mX, int mY) override;
+  
+  // App specific item to reset the game.
+  void Reset();
+  
+  // App specific item to set a cell.
+  void SetCell(int id, GridType type);
 private:
   bool _isRunning;
   
@@ -38,6 +59,11 @@ private:
   std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _xTexture;
   
   std::unique_ptr<SDL_Texture, void(*)(SDL_Texture *)> _oTexture;
+  
+  // Top left to bottom right is the grid.
+  std::array<GridType, 9> _grid;
+  
+  PlayerNumber _playerNumber;
 };
 
 #endif
